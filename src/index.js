@@ -8,7 +8,11 @@ class App extends React.Component {
 
     //ここだけ、直接代入できる。ほかではuseStateを使う
     this.state = { lat: null, errorMessage: "" };
+  }
 
+  //データの取得系はここがいい
+  componentDidMount() {
+    console.log("did mount");
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         console.log(position);
@@ -20,6 +24,10 @@ class App extends React.Component {
         this.setState({ errorMessage: error.message });
       }
     );
+  }
+
+  componentDidUpdate() {
+    console.log("did update");
   }
 
   render() {
