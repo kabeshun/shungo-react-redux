@@ -7,7 +7,7 @@ class App extends React.Component {
     super(props);
 
     //ここだけ、直接代入できる。ほかではuseStateを使う
-    this.state = { lat: null };
+    this.state = { lat: null, errorMessage: "" };
 
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -17,12 +17,23 @@ class App extends React.Component {
       },
       (error) => {
         console.error(error);
+        this.setState({ errorMessage: error.message });
       }
     );
   }
 
   render() {
-    return <div>Latitude: {this.state.lat} </div>;
+    if (this.state.errorMessage && !this.state.lat) {
+      return <div>Error: {this.state.errorMessage}</div>;
+    } else if (!this.state.errorMessage && this.state.lat) {
+      return (
+        <div>
+          Latitude: {this.state.lat} <br />
+        </div>
+      );
+    } else {
+      return <div>Loading</div>;
+    }
   }
 }
 
