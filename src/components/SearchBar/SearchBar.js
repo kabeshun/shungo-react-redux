@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import "./SearchBar.css";
 
 export default class SearchBar extends Component {
-  onInputChange(event) {
-    console.log(event.target.value);
-  }
-
-  onInputClick(event) {
-    console.log(event.target.value);
+  constructor() {
+    super();
+    this.state = { term: "sss" };
   }
 
   render() {
@@ -18,8 +15,10 @@ export default class SearchBar extends Component {
             <label>Image Search</label>
             <input
               type="input"
-              onClick={this.onInputClick}
-              onChange={this.onInputChange}
+              value={this.state.term}
+              onChange={(e) => {
+                this.setState({ term: e.target.value });
+              }}
             ></input>
           </div>
         </form>
