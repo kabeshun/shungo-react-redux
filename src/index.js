@@ -5,7 +5,7 @@ import ImageList from "./components/ImageList/ImageList";
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="ui container">
         <SearchBar />
         <ImageList />
       </div>
