@@ -7,9 +7,12 @@ export default class SearchBar extends Component {
     this.state = { term: "" };
   }
 
-  onFormSubmit(event) {
+  onFormSubmit = (event) => {
     event.preventDefault();
-  }
+
+    console.log(this.state.term);
+    this.props.onSubmit(this.state.term);
+  };
 
   render() {
     return (
@@ -26,6 +29,7 @@ export default class SearchBar extends Component {
             ></input>
           </div>
         </form>
+        <button>Submit</button>
       </div>
     );
   }
