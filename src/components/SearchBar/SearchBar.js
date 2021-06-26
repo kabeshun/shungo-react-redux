@@ -29,7 +29,6 @@ export default class SearchBar extends Component {
             ></input>
           </div>
         </form>
-        <button>Submit</button>
       </div>
     );
   }
