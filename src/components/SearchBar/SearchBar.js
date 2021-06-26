@@ -4,13 +4,20 @@ import "./SearchBar.css";
 export default class SearchBar extends Component {
   constructor() {
     super();
-    this.state = { term: "sss" };
+    this.state = { term: "" };
   }
+
+  onFormSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(this.state.term);
+    this.props.onSubmit(this.state.term);
+  };
 
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form className="ui form" onSubmit={this.onFormSubmit}>
           <div className="field">
             <label>Image Search</label>
             <input
