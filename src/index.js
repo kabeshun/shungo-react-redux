@@ -10,6 +10,8 @@ class App extends React.Component {
     this.state = { lat: null, errorMessage: "" };
   }
 
+  state = { lat: null, errorMessage: "" };
+
   //データの取得系はここがいい
   componentDidMount() {
     console.log("did mount");
@@ -34,11 +36,7 @@ class App extends React.Component {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     } else if (!this.state.errorMessage && this.state.lat) {
-      return (
-        <div>
-          Latitude: {this.state.lat} <br />
-        </div>
-      );
+      return <SeasonDisplay latitude={this.state.lat} />;
     } else {
       return <div>Loading</div>;
     }
