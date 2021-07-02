@@ -20,14 +20,22 @@ const Search = () => {
           srsearch: term,
         },
       });
+      setResults(data.query.search);
+
+      if (term && !results.length) {
+        search();
+      }
 
       const timeoutId = setTimeout(() => {
         if (!!data.query && term) {
-          setResults(data.query.search);
+          search();
         }
       }, 500);
+      return () => {
+        //cancel the timoutid
+        clearTimeout(timeoutId);
+      };
     };
-    search();
   }, [term]);
 
   const renderedResults = results.map((result) => {
