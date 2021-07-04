@@ -1,31 +1,7 @@
-import React, { useState } from "react";
-import Dropdown from "./components/Dropdown";
-import Search from "./components/Search";
+import React from "react";
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-  return (
-    <Dropdown
-      options={options}
-      selected={selected}
-      onSelectedChange={setSelected}
-    />
-  );
+  return (<div>app</div>)
 };
-
-const options = [
-  {
-    label: "The Color Red",
-    value: "red",
-  },
-  {
-    label: "The Color Green",
-    value: "green",
-  },
-  {
-    label: "The Color Blue",
-    value: "blue",
-  },
-];
 
 export default App;
